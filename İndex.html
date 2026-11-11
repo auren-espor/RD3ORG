@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>RD3 - Espor Slot Alma</title>
+    <style>
+        * { box-sizing: border-box; margin: 0; padding: 0; font-family: sans-serif; }
+        body { background-color: #0f1117; color: #ffffff; padding: 20px; display: flex; justify-content: center; min-height: 100vh; }
+        .container { width: 100%; max-width: 550px; background: #1a1d24; border-radius: 12px; padding: 25px; }
+        h1 { text-align: center; color: #ff4655; margin-bottom: 20px; font-size: 22px; }
+        .form-group { margin-bottom: 15px; }
+        label { display: block; margin-bottom: 6px; font-size: 14px; }
+        input, select { width: 100%; padding: 12px; background: #0f1117; border: 1px solid #30363d; border-radius: 6px; color: #fff; font-size: 14px; }
+        button { width: 100%; padding: 14px; background-color: #ff4655; color: white; border: none; border-radius: 6px; font-weight: bold; cursor: pointer; margin-top: 10px; font-size: 16px; }
+        button.secondary { background-color: #30363d; margin-top: 5px; }
+        .slot-list { margin-top: 25px; border-top: 1px solid #2a2e39; padding-top: 15px; }
+        .slot-item { display: flex; justify-content: space-between; align-items: center; background: #0f1117; padding: 10px 12px; border-radius: 6px; margin-bottom: 8px; font-size: 14px; }
+        .admin-section { margin-top: 20px; border-top: 1px solid #2a2e39; padding-top: 15px; }
+        .hidden { display: none; }
+        .delete-btn { background: #ff4655; padding: 5px 10px; font-size: 12px; width: auto; margin: 0; }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <h1>RD3 ESPOR SLOT ALMA</h1>
+
+    <form id="slotForm">
+        <div class="form-group">
+            <label>Takım Adı:</label>
+            <input type="text" id="teamName" placeholder="Takım adı girin" required>
+        </div>
+
+        <div class="form-group">
+            <label>Kaptan Discord / İletişim:</label>
+            <input type="text" id="captainContact" placeholder="İletişim adresi" required>
+        </div>
+
+        <div class="form-group">
+            <label>Slot Seçin (1-25):</label>
+            <select id="slotSelect" required></select>
+        </div>
+
+        <button type="submit">Slotu Rezerve Et</button>
+    </form>
+
+    <div class="admin-section">
+        <div id="loginArea">
+            <input type="password" id="adminPass" placeholder="Yönetici Şifresi" style="margin-bottom: 8px;">
+            <button type="button" class="secondary" onclick="adminLogin()">Yönetici Girişi Yap</button>
+        </div>
+        
+        <div id="adminPanel" class="hidden">
+            <p style="color: #2ecc71; margin-bottom: 10px; font-weight: bold;">Yönetici Paneli Aktif</p>
+            <button type="button" onclick="resetAllSlots()" style="background-color: #e74c3c;">Tüm Slotları Sıfırla</button>
+            <button type="button" class="secondary" onclick="adminLogout()">Çıkış Yap</button>
+        </div>
+    </div>
+
+    <div class="slot-list">
+        <h3>Slot Durumu (25 Yuva)</h3>
+        <div id="slotsContainer"></div>
+    </div>
+</div>
+
+<script src="script.js"></script>
+</body>
+</html>
